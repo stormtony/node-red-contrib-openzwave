@@ -212,6 +212,7 @@ module.exports = function(RED) {
 	}
 
 	function nodeEvent(nodeid, evtcode, valueId, msg) {
+		if (!valueId) return;
 		zwcallback('node event', {
 				"nodeid": nodeid, "event": evtcode,
 				"cmdclass": valueId.comclass,  "cmdidx": valueId.index, "instance": valueId.instance,
