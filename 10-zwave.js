@@ -234,6 +234,12 @@ module.exports = function(RED) {
 		zwcallback('controller command', {nodeid: nodeid, state: state, errcode: errcode, help: help});
 	}
 
+	function sceneEvent(nodeid, sceneid) {
+		if (!valueId) return;
+		zwcallback('scene event', {
+			"nodeid": nodeid, "sceneid": sceneid});
+	}
+
 	// list of events emitted by OpenZWave and redirected to Node flows by the mapped function
 	var ozwEvents = {
 		'driver ready' : driverReady,
@@ -246,8 +252,9 @@ module.exports = function(RED) {
 		'value removed': valueRemoved,
 		'notification' : notification,
 		'scan complete': scanComplete,
-		'controller command': controllerCommand
-	}
+		'controller command': controllerCommand,
+		'scene event'	: sceneEvent
+	};
 
 	// ==========================
 	function ZWaveController(n) {
