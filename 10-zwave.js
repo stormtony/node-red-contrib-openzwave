@@ -235,7 +235,6 @@ module.exports = function(RED) {
 	}
 
 	function sceneEvent(nodeid, sceneid) {
-		if (!valueId) return;
 		zwcallback('scene event', {
 			"nodeid": nodeid, "sceneid": sceneid});
 	}
